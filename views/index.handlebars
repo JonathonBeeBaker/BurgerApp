@@ -1,0 +1,57 @@
+<div class="pageBodyContainer">
+  <div class="header">
+    <img class="burgerImgMed" src="assets/img/burger.png">
+    <h1 id="pageTitle">Burgers!</h1>
+    <img class="burgerImgMed" src="assets/img/burger.png">
+  </div>
+
+  <div class="row">
+    <div class="sideBySide">
+      <h2 class="boxCaption">Not yet devoured:</h2>
+      <hr>
+      {{#each burgers}}
+        {{#unless devoured}}
+          <div class="burgerBox">
+            <img class="burgerImg" src="assets/img/burger.png">
+            {{burger_name}}
+            <button class="devourUndevour devour" data-id="{{id}}" data-devoured="{{devoured}}">Devour!</button>
+            <button class="deleteBurger" data-id="{{this.id}}">X</button>
+
+          </div>
+        {{/unless}}
+      {{/each}}
+    </div>
+
+    <div class="sideBySide">
+      <h2 class="boxCaption">Devoured:</h2>
+      <hr>
+      {{#each burgers}}
+        {{#if devoured}}
+          <div class="burgerBox">
+            <img class="burgerImg" src="assets/img/burger.png">
+            {{burger_name}}
+            <button class="devourUndevour undevour" data-id="{{id}}" data-devoured="{{devoured}}">Un-devour?</button>
+            <button class="deleteBurger" data-id="{{this.id}}">X</button>
+          </div>
+        {{/if}}
+      {{/each}}
+    </div>
+  </div>
+
+  <div id="addBurger">
+    <h2 class="boxCaption">Add a Burger</h2>
+    <hr>
+    <form class="burgerForm">
+
+      <div class="form-group">
+        <label for="burger_name">Burger Name:</label>
+        <input type="text" id="burger_name" name="burger_name">
+        <br>
+        <input type="radio" name="devoured" value="1"> Devoured!
+        <input type="radio" name="devoured" value="0" checked> Not Devoured!
+      </div>
+
+      <button id="burgerButton" type="submit">Add Burger</button>
+    </form>
+  </div>
+</div>
